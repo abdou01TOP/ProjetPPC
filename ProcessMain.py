@@ -44,14 +44,29 @@ def handler(sig,frame): #un handler le meme
 
 
 #actuellement programmé sur 3
-def GenerateHand(): #Générateur de hand avec les objets carte
+def GenerateHand(): #Générateur de hand avec les objets carte                   
 #en fonction du nombre de joueurs génerer des objets 
-    Hand1= ['Voiture','Avion','Train','Voiture','Voiture']
-    Hand2= ['Avion','Avion','Voiture','Train','Train']
-    Hand3=['Voiture','Avion','Avion','Train','Train']
-     
-    Currenthand = [Hand1,Hand2,Hand3]
+
+    Possibilities = ['Avion', 'Voiture', 'Train', 'Bicyclette', 'Pied']
+
+    Q= []
+    for i in range(nbjoueurs):
+        Q.append(choice(Possibilities))
+        del Possibilities[Possibilities.index(Q[-1])]
+
+    P = Q * 5   
+
+    Currenthand = []
+    
+    for i in range(nbjoueurs):
+        L =[]
+        for i in range(5):
+            L.append(choice(P))
+            del P[P.index(L[-1])]
+        Currenthand.append(L)
+ 
     return Currenthand
+
 
    
 
